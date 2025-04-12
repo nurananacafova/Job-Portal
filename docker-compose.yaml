@@ -15,7 +15,7 @@ services:
 
   job-portal:
     container_name: job_portal_container
-    image: job_portal_img:v1.1
+    image: nurananajafova/job_portal:v1.0
     ports:
       - "8080:8080"
     environment:
