@@ -3,7 +3,7 @@
 A backend system for a **Job Portal**, designed to manage and expose job listings. It includes structured fields for
 efficient filtering, searching, and retrieval.
 
-Data is scraped from external sources like [Djinni.co](https://djinni.co/).
+Data is scraped from [Djinni.co](https://djinni.co/).
 
 ---
 
@@ -30,7 +30,8 @@ Data is scraped from external sources like [Djinni.co](https://djinni.co/).
 
 ## Scraper Details
 
-When project runs, scraper works automatically and scrape data from [Djinni.co](https://djinni.co/).
+When project runs, scraper works automatically and scrape data from [Djinni.co](https://djinni.co/). Add jobs to the
+database.
 The scraper pulls jobs based on:
 
 - Remote + Worldwide
@@ -52,16 +53,17 @@ The scraper pulls jobs based on:
 
 ```
 git clone https://github.com/nurananacafova/Job-Portal.git
-cd Job-Portal
 ````
 
 #### 2. Go to root folder and run docker-compose.yaml file
 
 ```
+cd Job-Portal
 docker-compose up
 ```
 
-#### 3. Go to: http://localhost:8080/jobs/swagger-ui/index.html
+#### 3. After run docker-compose.yaml, go to: 
+http://localhost:8080/jobs/swagger-ui/index.html
 
 #### 4. Test with Swagger
 
