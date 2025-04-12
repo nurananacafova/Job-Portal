@@ -10,12 +10,9 @@ spring:
 #    url: jdbc:postgresql://postgres:5432/job_db
 #    username: postgres
 #    password: admin123
-    url: ${DATASOURCE_URL}
-    username: ${DATASOURCE_USERNAME}
-    password: ${DATASOURCE_PASSWORD}
-#    url: jdbc:postgresql://postgres:5432/jobs
-#    username: postgres
-#    password: postgres
+    url: ${DATASOURCE_URL:jdbc:postgresql://localhost:5432/job_db}
+    username: ${DATASOURCE_USERNAME:postgres}
+    password: ${DATASOURCE_PASSWORD:admin123}
   jpa:
     hibernate:
       ddl-auto: update
