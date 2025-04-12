@@ -1,30 +1,30 @@
 version: "3.8"
 services:
-  job-portal:
-    container_name: job_portal_container
-    image: job_portal_img:v1.3
-    ports:
-      - "8080:8080"
-    environment:
-      DATASOURCE_URL: jdbc:postgresql://postgres:5432/jobs
-      DATASOURCE_PASSWORD: postgres
-      DATASOURCE_USERNAME: postgres
-    depends_on:
-      - postgres
-    restart: unless-stopped
-
   postgres:
     container_name: postgres_container
     image: postgres:latest
     environment:
       POSTGRES_USER: postgres
-      POSTGRES_PASSWORD: postgres
-      POSTGRES_DB: jobs
-    volumes:
-      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
-#      - ./docker/postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+      POSTGRES_PASSWORD: admin123
+      POSTGRES_DB: job_db
+    #    volumes:
+    #      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
+    #      - ./docker/postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
     ports:
       - "5432:5432"
-#    networks:
-#      - postgres
+    #    networks:
+    #      - postgres
     restart: always
+
+  job-portal:
+    container_name: job_portal_container
+    image: job_portal_img:v1.5
+    ports:
+      - "8080:8080"
+    environment:
+      DATASOURCE_URL: jdbc:postgresql://postgres:5432/job_db
+      DATASOURCE_USERNAME: postgres
+      DATASOURCE_PASSWORD: admin123
+    depends_on:
+      - postgres
+    restart: unless-stopped
