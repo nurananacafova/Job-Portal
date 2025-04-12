@@ -7,24 +7,24 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: admin123
       POSTGRES_DB: job_db
-    #    volumes:
-    #      - ./docker/postgres/init.sql:/docker-entrypoint-initdb.d/init.sql
-    #      - ./docker/postgresql/init.sql:/docker-entrypoint-initdb.d/init.sql
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
     ports:
-      - "5433:5432"
-    #    networks:
-    #      - postgres
+      - "5432:5432"
     restart: always
 
   job-portal:
     container_name: job_portal_container
-    image: job_portal_img:v1.0
+    image: job_portal_img:v1.1
     ports:
       - "8080:8080"
     environment:
-      DATASOURCE_URL: jdbc:postgresql://postgres:5433/job_db
+      DATASOURCE_URL: jdbc:postgresql://postgres:5432/job_db
       DATASOURCE_USERNAME: postgres
       DATASOURCE_PASSWORD: admin123
     depends_on:
       - postgres
     restart: unless-stopped
+
+volumes:
+  postgres_data:

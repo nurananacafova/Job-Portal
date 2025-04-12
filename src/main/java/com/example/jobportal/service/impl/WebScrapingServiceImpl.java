@@ -69,7 +69,6 @@ public class WebScrapingServiceImpl implements WebScrapingService {
 //            job.setCompanyLogo(logoEl != null ? BASE_URL + logoEl.attr("src") : null);
             Element logoEl = jobElement.selectFirst("img.userpic-image");
             String logoUrl = logoEl != null ? logoEl.attr("src") : null;
-            log.info("Logo: {}", logoUrl);
             jobDto.setCompanyLogo(logoUrl != null ? logoUrl : null);
 
             if (jobDetailUrl != null) {
@@ -124,7 +123,7 @@ public class WebScrapingServiceImpl implements WebScrapingService {
 
             if ((isRemote && isWorldwide) || (isRemote && mentionsAzerbaijan) || offersRelocation) {
                 jobs.add(jobDto);
-                log.info("Job Added: {}", jobDto);
+                log.info("Job Added: {}", jobDto.getJobTitle());
             } else {
                 log.info("Skipped: {}", jobDto.getJobTitle());
             }

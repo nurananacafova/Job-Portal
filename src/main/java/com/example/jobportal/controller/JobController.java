@@ -35,11 +35,11 @@ public class JobController {
         return new ResponseEntity<>(jobService.sortAllJobs(pageNumber, size, sortBy, sortDir), HttpStatus.PARTIAL_CONTENT);
     }
 
-    @PostMapping("/load")
-    public ResponseEntity<String> scrapeJobs() throws IOException {
-        webScrapingService.scrapeAndSaveJobs();
-        return new ResponseEntity<>(HttpStatus.CREATED);
-    }
+//    @PostMapping("/load")
+//    public ResponseEntity<String> scrapeJobs() throws IOException {
+//        webScrapingService.scrapeAndSaveJobs();
+//        return new ResponseEntity<>(HttpStatus.CREATED);
+//    }
 
     @GetMapping("/filter")
     public ResponseEntity<List<JobDto>> filterJobs(
